@@ -48,7 +48,7 @@ const Company = ({ company, resources }) => (
       </a>
     </div>
 
-    <ResourcesGrid company={company} resources={resources} />
+    <ResourcesGrid companies={[company]} resources={resources} />
   </>
 );
 
@@ -67,14 +67,14 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { company: companyName } }) {
   const companies = await getCompaniesWithMetaData();
-  const resourcesWithoutCompanies = await getResourcesWithMetaData();
+  const unfilteredResources = await getResourcesWithMetaData();
 
   const company = companies.find(
     ({ name }) => name.toLowerCase() === companyName
   );
 
-  const resources = resourcesWithoutCompanies.filter(
-    resource => resource.company[0] === company.id
+  const resources = unfilteredResources.filter(
+    resource => resource.compan === company.id
   );
 
   return {

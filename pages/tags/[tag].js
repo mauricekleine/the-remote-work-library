@@ -7,7 +7,7 @@ import {
 } from "../../utils/fetch";
 import ResourcesGrid from "../../components/ResourcesGrid";
 
-const Tag = ({ resources, tag }) => (
+const Tag = ({ companies, resources, tag }) => (
   <>
     <Head>
       <title>The Remote Work Library | Remote work {tag.toLowerCase()}s</title>
@@ -19,7 +19,7 @@ const Tag = ({ resources, tag }) => (
       </p>
     </div>
 
-    <ResourcesGrid resources={resources} />
+    <ResourcesGrid companies={companies} resources={resources} />
   </>
 );
 
@@ -38,17 +38,14 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { tag } }) {
   const companies = await getCompaniesWithMetaData();
-  const resourcesWithoutCompanies = await getResourcesWithMetaData();
+  const unfilteredResources = await getResourcesWithMetaData();
 
-  const resources = resourcesWithoutCompanies
-    .map(resource => ({
-      ...resource,
-      company: companies.find(({ id }) => id === resource.company[0])
-    }))
-    .filter(({ type }) => type.toLowerCase() === tag);
+  const resources = unfilteredResources.filter(
+    ({ type }) => type.toLowerCase() === tag
+  );
 
   return {
-    props: { resources, tag }
+    props: { companies, resources, tag }
   };
 }
 

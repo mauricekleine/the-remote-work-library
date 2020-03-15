@@ -34,7 +34,9 @@ const fetchRecords = async table => {
     };
 
     Object.keys(record.fields).map(field => {
-      normalizedRecord[field.toLowerCase()] = record.fields[field];
+      const normalizedField = field.toLowerCase();
+
+      normalizedRecord[normalizedField] = record.fields[field];
     });
 
     return normalizedRecord;
@@ -64,11 +66,12 @@ export const getResourcesWithMetaData = async () => {
   const resourceRecords = await getResources();
 
   return await Promise.all(
-    resourceRecords.map(async record => {
-      const metadata = await fetchMetaData(record.link);
+    resourceRecords.map(async resource => {
+      const metadata = await fetchMetaData(resource.link);
 
       return {
-        ...record,
+        ...resource,
+        company: resource.company[0],
         ...metadata
       };
     })

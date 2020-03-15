@@ -6,27 +6,23 @@ import {
 } from "../utils/fetch";
 import ResourcesGrid from "../components/ResourcesGrid";
 
-const Home = ({ resources }) => (
+const Home = ({ companies, resources }) => (
   <>
     <Head>
       <title>The Remote Work Library</title>
     </Head>
 
-    <ResourcesGrid resources={resources} />
+    <ResourcesGrid companies={companies} resources={resources} />
   </>
 );
 
 export async function getStaticProps() {
   const companies = await getCompaniesWithMetaData();
-  const resourcesWithoutCompanies = await getResourcesWithMetaData();
-
-  const resources = resourcesWithoutCompanies.map(resource => ({
-    ...resource,
-    company: companies.find(({ id }) => id === resource.company[0])
-  }));
+  const resources = await getResourcesWithMetaData();
 
   return {
     props: {
+      companies,
       resources
     }
   };

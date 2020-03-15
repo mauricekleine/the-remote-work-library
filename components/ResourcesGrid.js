@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-const ResourcesGrid = ({ company, resources }) => (
+const ResourcesGrid = ({ companies, resources }) => (
   <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-8">
     {resources.map(resource => {
-      const companyToDisplay = company || resource.company;
+      const company = companies.find(({ id }) => id === resource.company);
 
       return (
         <a
@@ -18,7 +18,7 @@ const ResourcesGrid = ({ company, resources }) => (
             alt={resource.name}
           />
 
-          <div className="flex flex-col justify-between px-6 py-4 h-48">
+          <div className="flex flex-col justify-between px-6 py-4 h-56">
             <div>
               <div className="text-gray-900 font-bold text-xl mb-2">
                 {resource.name}
@@ -30,18 +30,16 @@ const ResourcesGrid = ({ company, resources }) => (
             <div className="flex justify-between">
               <Link
                 href="/resources/[company]"
-                as={`/resources/${companyToDisplay.name.toLowerCase()}`}
+                as={`/resources/${company.name.toLowerCase()}`}
               >
                 <div className="flex items-center hover:underline">
                   <img
-                    alt={companyToDisplay.description}
+                    alt={company.description}
                     className="w-4 h-4 mr-2"
-                    src={companyToDisplay.logo}
+                    src={company.logo}
                   />
 
-                  <p className="text-gray-600 text-xs">
-                    {companyToDisplay.name}
-                  </p>
+                  <p className="text-gray-600 text-xs">{company.name}</p>
                 </div>
               </Link>
 
