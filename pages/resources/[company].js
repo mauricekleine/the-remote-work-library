@@ -74,7 +74,7 @@ export async function getStaticProps({ params: { company: companyName } }) {
   );
 
   const resources = unfilteredResources.filter(
-    resource => resource.compan === company.id
+    resource => resource.company === company.id
   );
 
   return {
