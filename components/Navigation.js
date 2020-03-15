@@ -4,10 +4,10 @@ const Navigation = () => (
   <div className="mb-8 border-b border-gray-600 bg-white">
     <nav className="container mx-4 sm:mx-auto py-6">
       <Link href="/">
-        <div className="flex items-center">
+        <div className="flex items-center cursor-pointer">
           <img
             className="w-6 mr-2"
-            src="favicon-32x32.png"
+            src="/favicon-32x32.png"
             alt="The Remote Work Library"
           />
 
