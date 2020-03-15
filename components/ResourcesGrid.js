@@ -32,7 +32,7 @@ const ResourcesGrid = ({ companies, resources }) => (
                 href="/resources/[company]"
                 as={`/resources/${company.name.toLowerCase()}`}
               >
-                <div className="flex items-center hover:underline">
+                <a className="flex items-center hover:underline">
                   <img
                     alt={company.description}
                     className="w-4 h-4 mr-2"
@@ -40,16 +40,16 @@ const ResourcesGrid = ({ companies, resources }) => (
                   />
 
                   <p className="text-gray-600 text-xs">{company.name}</p>
-                </div>
+                </a>
               </Link>
 
               <Link
                 href="/tags/[tag]"
                 as={`/tags/${resource.type.toLowerCase()}`}
               >
-                <span className="bg-blue-100 rounded px-2 py-1 text-blue-500 hover:text-blue-600 text-xs transition duration-300 ease-in-out hover:bg-blue-200">
+                <a className="bg-blue-100 rounded px-2 py-1 text-blue-500 hover:text-blue-600 text-xs transition duration-300 ease-in-out hover:bg-blue-200">
                   {resource.type}
-                </span>
+                </a>
               </Link>
             </div>
           </div>
