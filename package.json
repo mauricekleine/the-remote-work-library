@@ -8,8 +8,30 @@
     "start": "next start"
   },
   "dependencies": {
+    "airtable": "^0.8.1",
+    "got": "^10.6.0",
+    "metascraper": "^5.11.6",
+    "metascraper-description": "^5.11.6",
+    "metascraper-image": "^5.11.6",
+    "metascraper-logo-favicon": "^5.11.6",
     "next": "9.3.0",
+    "node-fetch": "^2.6.0",
     "react": "16.13.0",
-    "react-dom": "16.13.0"
+    "react-dom": "16.13.0",
+    "tailwindcss": "^1.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "husky": ">=4",
+    "lint-staged": ">=10",
+    "prettier": "1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }
