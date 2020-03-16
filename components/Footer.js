@@ -7,6 +7,7 @@ const Footer = () => (
           <a
             className="text-blue-500"
             href="https://mauricekleine.com"
+            rel="noreferrer"
             target="_blank"
           >
             Maurice Kleine
@@ -15,6 +16,7 @@ const Footer = () => (
           <a
             className="text-blue-500"
             href="https://nextjs.com"
+            rel="noreferrer"
             target="_blank"
           >
             Next.js
@@ -23,6 +25,7 @@ const Footer = () => (
           <a
             className="text-blue-500"
             href="https://tailwindcss.com/"
+            rel="noreferrer"
             target="_blank"
           >
             Tailwind CSS

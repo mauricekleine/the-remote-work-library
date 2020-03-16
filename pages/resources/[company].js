@@ -34,6 +34,7 @@ const Company = ({ company, resources }) => (
       <a
         className="flex items-center hover:underline"
         href={company.website}
+        rel="noreferrer"
         target="_blank"
       >
         <svg

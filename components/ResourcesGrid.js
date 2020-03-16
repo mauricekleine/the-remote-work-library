@@ -10,6 +10,7 @@ const ResourcesGrid = ({ companies, resources }) => (
           className="bg-white border border-gray-600 transform transition duration-300 ease-in-out rounded hover:shadow-lg hover:translate-y-1 shadow-2xl"
           href={resource.link}
           key={resource.id}
+          rel="noreferrer"
           target="_blank"
         >
           <img
