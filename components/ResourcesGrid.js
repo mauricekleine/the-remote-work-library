@@ -15,7 +15,9 @@ const ResourcesGrid = ({ companies, resources }) => (
           <img
             className="object-cover rounded-t w-full h-48"
             src={resource.image}
-            alt={resource.name}
+            alt={`A remote work ${resource.type.toLowerCase()} by ${
+              company.name
+            }`}
           />
 
           <div className="flex flex-col justify-between px-6 pt-4 h-40">
@@ -37,7 +39,7 @@ const ResourcesGrid = ({ companies, resources }) => (
             >
               <a className="flex items-center hover:underline">
                 <img
-                  alt={company.description}
+                  alt={company.name}
                   className="w-4 h-4 mr-2"
                   src={company.logo}
                 />

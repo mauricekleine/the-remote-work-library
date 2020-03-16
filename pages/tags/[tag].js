@@ -11,12 +11,17 @@ const Tag = ({ companies, resources, tag }) => (
   <>
     <Head>
       <title>The Remote Work Library | Remote work {tag.toLowerCase()}s</title>
+
+      <meta
+        name="description"
+        content={`A curated list of remote work ${tag.toLowerCase()}s`}
+      />
     </Head>
 
     <div className="bg-white rounded border border-gray-600 mb-8 py-4 px-6">
-      <p className="text-gray-900 font-bold text-xl mr-2">
+      <h1 className="text-gray-900 font-bold text-xl mr-2">
         Remote work {tag.toLowerCase()}s
-      </p>
+      </h1>
     </div>
 
     <ResourcesGrid companies={companies} resources={resources} />

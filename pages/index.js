@@ -10,6 +10,11 @@ const Home = ({ companies, resources }) => (
   <>
     <Head>
       <title>The Remote Work Library</title>
+
+      <meta
+        name="description"
+        content="A curated list of remote work resources"
+      />
     </Head>
 
     <ResourcesGrid companies={companies} resources={resources} />

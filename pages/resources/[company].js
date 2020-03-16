@@ -13,15 +13,20 @@ const Company = ({ company, resources }) => (
       <title>
         The Remote Work Library | Remote work resources by {company.name}
       </title>
+
+      <meta
+        name="description"
+        content={`A curated list of remote work resources by ${company.name}`}
+      />
     </Head>
 
     <div className="bg-white rounded border border-gray-600 mb-8 py-4 px-6">
       <div className="flex items-center mb-2">
-        <p className="text-gray-900 font-bold text-xl mr-2">
+        <h1 className="text-gray-900 font-bold text-xl mr-2">
           Remote work resources by {company.name}
-        </p>
+        </h1>
 
-        <img alt={company.description} className="w-6 h-6" src={company.logo} />
+        <img alt={company.name} className="w-6 h-6" src={company.logo} />
       </div>
 
       <p className="text-gray-700">{company.description}</p>
