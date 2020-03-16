@@ -3,7 +3,7 @@ import Link from "next/link";
 const Navigation = () => (
   <div className="mb-8 border-b border-gray-600 bg-white">
     <nav className="container mx-auto py-2">
-      <div class="mx-8 sm:mx-auto">
+      <div className="mx-8 sm:mx-auto">
         <Link href="/">
           <a>
             <div className="flex items-center cursor-pointer">
@@ -13,7 +13,7 @@ const Navigation = () => (
                 alt="The Remote Work Library"
               />
 
-              <div class="flex flex-col">
+              <div className="flex flex-col">
                 <h2 className="font-bold text-xl text-black -mb-1">
                   The Remote Work Library
                 </h2>
