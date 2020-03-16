@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { toSlug } from "../utils/string";
+
 const ResourcesGrid = ({ companies, resources }) => (
   <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-8">
     {resources.map(resource => {
@@ -15,10 +17,8 @@ const ResourcesGrid = ({ companies, resources }) => (
         >
           <img
             className="object-cover rounded-t w-full h-48"
-            src={resource.image}
-            alt={`A remote work ${resource.type.toLowerCase()} by ${
-              company.name
-            }`}
+            src={`covers/${resource.id}.${resource.image.split(".").pop()}`}
+            alt={`A remote work ${resource.type} by ${company.name}`}
           />
 
           <div className="flex flex-col justify-between px-6 pt-4 h-40">
@@ -36,7 +36,7 @@ const ResourcesGrid = ({ companies, resources }) => (
           <div className="flex justify-between rounded bg-gray-100 px-6 py-2">
             <Link
               href="/resources/[company]"
-              as={`/resources/${company.name.toLowerCase().replace(/ /g, "")}`}
+              as={`/resources/${toSlug(company.name)}`}
             >
               <a className="flex items-center hover:underline">
                 <img
@@ -49,10 +49,7 @@ const ResourcesGrid = ({ companies, resources }) => (
               </a>
             </Link>
 
-            <Link
-              href="/tags/[tag]"
-              as={`/tags/${resource.type.toLowerCase()}`}
-            >
+            <Link href="/tags/[tag]" as={`/tags/${toSlug(resource.type)}`}>
               <a className="bg-blue-100 rounded px-2 py-1 text-blue-500 hover:text-blue-600 text-xs transition duration-300 ease-in-out hover:bg-blue-200">
                 {resource.type}
               </a>

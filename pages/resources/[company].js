@@ -1,11 +1,13 @@
 import Head from "next/head";
 
+import ResourcesGrid from "../../components/ResourcesGrid";
+
 import {
   getResourcesWithMetaData,
   getCompaniesWithMetaData,
   getCompanies
 } from "../../utils/fetch";
-import ResourcesGrid from "../../components/ResourcesGrid";
+import { toSlug } from "../../utils/string";
 
 const Company = ({ company, resources }) => (
   <>
@@ -62,7 +64,7 @@ export async function getStaticPaths() {
   const companies = await getCompanies();
 
   const paths = companies.map(({ name }) => ({
-    params: { company: name.toLowerCase().replace(/ /g, "") }
+    params: { company: toSlug(name) }
   }));
 
   return {
@@ -71,12 +73,12 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { company: companyName } }) {
+export async function getStaticProps({ params: { company: companyNameSlug } }) {
   const companies = await getCompaniesWithMetaData();
   const unfilteredResources = await getResourcesWithMetaData();
 
   const company = companies.find(
-    ({ name }) => name.toLowerCase().replace(/ /g, "") === companyName
+    ({ name }) => toSlug(name) === companyNameSlug
   );
 
   const resources = unfilteredResources.filter(

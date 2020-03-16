@@ -10,6 +10,7 @@
   "dependencies": {
     "airtable": "^0.8.1",
     "autoprefixer": "^9.7.4",
+    "axios": "^0.19.2",
     "got": "^10.6.0",
     "metascraper": "^5.11.6",
     "metascraper-description": "^5.11.6",
@@ -19,6 +20,7 @@
     "node-fetch": "^2.6.0",
     "react": "16.13.0",
     "react-dom": "16.13.0",
+    "sharp": "^0.25.1",
     "tailwindcss": "^1.2.0"
   },
   "devDependencies": {

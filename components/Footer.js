@@ -1,7 +1,7 @@
 const Footer = () => (
   <div className="mt-8 border-t border-gray-600 bg-white">
     <div className="container mx-auto py-2 text-xs text-center">
-      <div class="mx-8 sm:mx-auto">
+      <div className="mx-8 sm:mx-auto">
         <p>
           Made with 💖 by{" "}
           <a
