@@ -9,7 +9,9 @@ import ResourcesGrid from "../components/ResourcesGrid";
 const Home = ({ companies, resources }) => (
   <>
     <Head>
-      <title>The Remote Work Library</title>
+      <title>
+        The Remote Work Library | A curated list of remote work resources
+      </title>
 
       <meta
         name="description"
