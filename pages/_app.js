@@ -17,7 +17,7 @@ export default function MyApp({ Component, pageProps }) {
         <Navigation />
 
         <div className="container mx-auto">
-          <div class="mx-4 sm:mx-auto">
+          <div class="mx-8 sm:mx-auto">
             <Component {...pageProps} />
           </div>
         </div>
