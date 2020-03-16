@@ -14,13 +14,13 @@ const Navigation = () => (
               />
 
               <div class="flex flex-col">
-                <p className="font-bold text-xl text-black -mb-1">
+                <h2 className="font-bold text-xl text-black -mb-1">
                   The Remote Work Library
-                </p>
+                </h2>
 
-                <p className="text-xs text-gray-700">
+                <h1 className="text-xs text-gray-700">
                   a curated list of remote work resources
-                </p>
+                </h1>
               </div>
             </div>
           </a>
