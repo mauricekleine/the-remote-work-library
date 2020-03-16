@@ -1,5 +1,4 @@
 const axios = require("axios");
-const path = require("path");
 const sharp = require("sharp");
 
 const { getResourcesWithMetaData } = require("./fetch");
@@ -15,8 +14,9 @@ const { getResourcesWithMetaData } = require("./fetch");
       });
 
       return sharp(response.data)
-        .resize(300)
-        .toFile(`public/covers/${id}${path.extname(image)}`);
+        .resize(480)
+        .png()
+        .toFile(`public/covers/${id}.png`);
     })
   );
 })();
