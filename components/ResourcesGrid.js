@@ -18,14 +18,12 @@ const ResourcesGrid = ({ companies, resources }) => (
             alt={resource.name}
           />
 
-          <div className="flex flex-col justify-between px-6 py-4 h-56">
-            <div>
-              <div className="text-gray-900 font-bold text-xl mb-2">
-                {resource.name}
-              </div>
-
-              <p className="text-gray-700 truncate">{resource.description}</p>
+          <div className="flex flex-col justify-between px-6 py-4 h-48">
+            <div className="text-gray-900 font-bold sm:text-lg text-xl">
+              {resource.name}
             </div>
+
+            <div className="text-gray-700 truncate">{resource.description}</div>
 
             <div className="flex justify-between">
               <Link
