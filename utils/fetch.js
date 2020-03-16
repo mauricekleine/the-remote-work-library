@@ -43,9 +43,9 @@ const fetchRecords = async table => {
   });
 };
 
-export const getCompanies = async () => await fetchRecords("Companies");
+const getCompanies = async () => await fetchRecords("Companies");
 
-export const getCompaniesWithMetaData = async () => {
+const getCompaniesWithMetaData = async () => {
   const companyRecords = await getCompanies();
 
   return await Promise.all(
@@ -60,9 +60,9 @@ export const getCompaniesWithMetaData = async () => {
   );
 };
 
-export const getResources = async () => await fetchRecords("Resources");
+const getResources = async () => await fetchRecords("Resources");
 
-export const getResourcesWithMetaData = async () => {
+const getResourcesWithMetaData = async () => {
   const resourceRecords = await getResources();
 
   return await Promise.all(
@@ -76,4 +76,11 @@ export const getResourcesWithMetaData = async () => {
       };
     })
   );
+};
+
+module.exports = {
+  getCompanies,
+  getCompaniesWithMetaData,
+  getResources,
+  getResourcesWithMetaData
 };
