@@ -1,9 +1,9 @@
-import got from "got";
-import Metascraper from "metascraper";
-import MetascraperDescription from "metascraper-description";
-import MetascraperImage from "metascraper-image";
-import MetascraperLogoFavicon from "metascraper-logo-favicon";
-import fetch from "node-fetch";
+const got = require("got");
+const Metascraper = require("metascraper");
+const MetascraperDescription = require("metascraper-description");
+const MetascraperImage = require("metascraper-image");
+const MetascraperLogoFavicon = require("metascraper-logo-favicon");
+const fetch = require("node-fetch");
 
 const AIRTABLE_API_ENDPOINT = `https://api.airtable.com/v0/${process.env.AIRTABLE_API_BASE}`;
 
