@@ -61,7 +61,7 @@ export async function getStaticPaths() {
   const companies = await getCompanies();
 
   const paths = companies.map(({ name }) => ({
-    params: { company: name.toLowerCase() }
+    params: { company: name.toLowerCase().replace(/ /g, "") }
   }));
 
   return {
@@ -75,7 +75,7 @@ export async function getStaticProps({ params: { company: companyName } }) {
   const unfilteredResources = await getResourcesWithMetaData();
 
   const company = companies.find(
-    ({ name }) => name.toLowerCase() === companyName
+    ({ name }) => name.toLowerCase().replace(/ /g, "") === companyName
   );
 
   const resources = unfilteredResources.filter(

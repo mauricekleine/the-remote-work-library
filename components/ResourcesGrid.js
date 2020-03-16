@@ -35,7 +35,7 @@ const ResourcesGrid = ({ companies, resources }) => (
           <div className="flex justify-between rounded bg-gray-100 px-6 py-2">
             <Link
               href="/resources/[company]"
-              as={`/resources/${company.name.toLowerCase()}`}
+              as={`/resources/${company.name.toLowerCase().replace(/ /g, "")}`}
             >
               <a className="flex items-center hover:underline">
                 <img
