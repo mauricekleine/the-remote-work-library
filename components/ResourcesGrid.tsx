@@ -1,8 +1,14 @@
 import Link from "next/link";
 
 import { toSlug } from "../utils/string";
+import { CompanyWithMetaData, ResourceWithMetaData } from "../utils/types";
 
-const ResourcesGrid = ({ companies, resources }) => (
+type Props = {
+  companies: CompanyWithMetaData[];
+  resources: ResourceWithMetaData[];
+};
+
+const ResourcesGrid = ({ companies, resources }: Props) => (
   <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-8">
     {resources.map(resource => {
       const company = companies.find(({ id }) => id === resource.company);

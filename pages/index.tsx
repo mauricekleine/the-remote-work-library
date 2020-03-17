@@ -1,3 +1,4 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
 
 import {
@@ -6,8 +7,14 @@ import {
 } from "../utils/fetch";
 import ResourcesGrid from "../components/ResourcesGrid";
 import { getCompoundedString, getUniqueTags } from "../utils/string";
+import { CompanyWithMetaData, ResourceWithMetaData } from "../utils/types";
 
-const Home = ({ companies, resources }) => {
+type Props = {
+  companies: CompanyWithMetaData[];
+  resources: ResourceWithMetaData[];
+};
+
+const IndexPage = ({ companies, resources }: Props) => {
   const tags = getUniqueTags(resources);
   const tagsString = getCompoundedString(tags);
 
@@ -29,9 +36,9 @@ const Home = ({ companies, resources }) => {
   );
 };
 
-export async function getStaticProps() {
-  const companies = await getCompaniesWithMetaData();
-  const resources = await getResourcesWithMetaData();
+export const getStaticProps: GetStaticProps = async () => {
+  const companies: CompanyWithMetaData[] = await getCompaniesWithMetaData();
+  const resources: ResourceWithMetaData[] = await getResourcesWithMetaData();
 
   return {
     props: {
@@ -39,6 +46,6 @@ export async function getStaticProps() {
       resources
     }
   };
-}
+};
 
-export default Home;
+export default IndexPage;

@@ -13,9 +13,11 @@ const getCompoundedString = stringArray => {
     .join(", ")} and ${pluralize(stringArray[stringArray.length - 1])}`;
 };
 
-const getUniqueTags = resources => [
-  ...new Set(resources.map(({ tag }) => tag))
-];
+const getUniqueTags = resources => {
+  const tags = resources.map(({ tag }) => tag);
+
+  return [...new Set(tags)];
+};
 
 const pluralize = string => `${string}s`;
 

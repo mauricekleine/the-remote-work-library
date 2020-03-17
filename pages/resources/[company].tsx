@@ -1,3 +1,4 @@
+import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 
 import ResourcesGrid from "../../components/ResourcesGrid";
@@ -8,8 +9,18 @@ import {
   getResourcesWithMetaData
 } from "../../utils/fetch";
 import { getCompoundedString, getUniqueTags, toSlug } from "../../utils/string";
+import {
+  Company,
+  CompanyWithMetaData,
+  ResourceWithMetaData
+} from "../../utils/types";
 
-const Company = ({ company, resources }) => {
+type Props = {
+  company: CompanyWithMetaData;
+  resources: ResourceWithMetaData[];
+};
+
+const CompanyPage = ({ company, resources }: Props) => {
   const tags = getUniqueTags(resources);
   const tagsString = getCompoundedString(tags);
 
@@ -65,8 +76,8 @@ const Company = ({ company, resources }) => {
   );
 };
 
-export async function getStaticPaths() {
-  const companies = await getCompanies();
+export const getStaticPaths: GetStaticPaths = async () => {
+  const companies: Company[] = await getCompanies();
 
   const paths = companies.map(({ name }) => ({
     params: { company: toSlug(name) }
@@ -76,11 +87,13 @@ export async function getStaticPaths() {
     paths,
     fallback: false
   };
-}
+};
 
-export async function getStaticProps({ params: { company: companyNameSlug } }) {
-  const companies = await getCompaniesWithMetaData();
-  const unfilteredResources = await getResourcesWithMetaData();
+export const getStaticProps: GetStaticProps = async ({
+  params: { company: companyNameSlug }
+}) => {
+  const companies: CompanyWithMetaData[] = await getCompaniesWithMetaData();
+  const unfilteredResources: ResourceWithMetaData[] = await getResourcesWithMetaData();
 
   const company = companies.find(
     ({ name }) => toSlug(name) === companyNameSlug
@@ -93,6 +106,6 @@ export async function getStaticProps({ params: { company: companyNameSlug } }) {
   return {
     props: { company, resources }
   };
-}
+};
 
-export default Company;
+export default CompanyPage;
