@@ -4,5 +4,6 @@
       "AIRTABLE_API_BASE": "@airtable_api_base",
       "AIRTABLE_API_KEY": "@airtable_api_key"
     }
-  }
+  },
+  "trailingSlash": false
 }
