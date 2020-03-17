@@ -5,7 +5,7 @@ const Footer = () => (
         <p>
           Made with 💖 by{" "}
           <a
-            className="text-blue-500"
+            className="text-gray-700 hover:underline"
             href="https://mauricekleine.com"
             rel="noreferrer"
             target="_blank"
@@ -14,7 +14,7 @@ const Footer = () => (
           </a>{" "}
           using{" "}
           <a
-            className="text-blue-500"
+            className="text-gray-700 hover:underline"
             href="https://nextjs.com"
             rel="noreferrer"
             target="_blank"
@@ -23,7 +23,7 @@ const Footer = () => (
           </a>{" "}
           and{" "}
           <a
-            className="text-blue-500"
+            className="text-gray-700 hover:underline"
             href="https://tailwindcss.com/"
             rel="noreferrer"
             target="_blank"

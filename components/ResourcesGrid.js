@@ -33,7 +33,7 @@ const ResourcesGrid = ({ companies, resources }) => (
             </div>
           </div>
 
-          <div className="flex justify-between rounded bg-gray-100 px-6 py-2">
+          <div className="flex justify-between rounded bg-gray-100 px-6 py-3">
             <Link
               href="/resources/[company]"
               as={`/resources/${toSlug(company.name)}`}
@@ -45,13 +45,13 @@ const ResourcesGrid = ({ companies, resources }) => (
                   src={company.logo}
                 />
 
-                <p className="text-gray-600 text-xs">{company.name}</p>
+                <p className="text-gray-700 text-xs">{company.name}</p>
               </a>
             </Link>
 
             <Link href="/tags/[tag]" as={`/tags/${toSlug(resource.type)}`}>
-              <a className="bg-blue-100 rounded px-2 py-1 text-blue-500 hover:text-blue-600 text-xs transition duration-300 ease-in-out hover:bg-blue-200">
-                {resource.type}
+              <a className="text-gray-700 text-xs hover:underline">
+                #{resource.type}
               </a>
             </Link>
           </div>

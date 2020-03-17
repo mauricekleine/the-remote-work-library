@@ -5,7 +5,7 @@ import Navigation from "../components/Navigation";
 
 import "./styles.css";
 
-export default function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
@@ -26,4 +26,6 @@ export default function MyApp({ Component, pageProps }) {
       </div>
     </>
   );
-}
+};
+
+export default MyApp;
