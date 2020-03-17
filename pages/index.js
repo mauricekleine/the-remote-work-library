@@ -5,23 +5,29 @@ import {
   getResourcesWithMetaData
 } from "../utils/fetch";
 import ResourcesGrid from "../components/ResourcesGrid";
+import { getCompoundedString, getUniqueTags } from "../utils/string";
 
-const Home = ({ companies, resources }) => (
-  <>
-    <Head>
-      <title>
-        The Remote Work Library | A curated list of remote work resources
-      </title>
+const Home = ({ companies, resources }) => {
+  const tags = getUniqueTags(resources);
+  const tagsString = getCompoundedString(tags);
 
-      <meta
-        name="description"
-        content="A curated list of remote work resources"
-      />
-    </Head>
+  return (
+    <>
+      <Head>
+        <title>
+          The Remote Work Library | A curated list of remote work resources
+        </title>
 
-    <ResourcesGrid companies={companies} resources={resources} />
-  </>
-);
+        <meta
+          name="description"
+          content={`A curated list of ${tagsString} about remote work, working remotely, remote teams and collaborating remotely`}
+        />
+      </Head>
+
+      <ResourcesGrid companies={companies} resources={resources} />
+    </>
+  );
+};
 
 export async function getStaticProps() {
   const companies = await getCompaniesWithMetaData();

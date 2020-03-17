@@ -3,38 +3,47 @@ import Head from "next/head";
 import ResourcesGrid from "../../components/ResourcesGrid";
 
 import {
-  getResourcesWithMetaData,
   getCompaniesWithMetaData,
-  getResources
+  getResources,
+  getResourcesWithMetaData
 } from "../../utils/fetch";
-import { toSlug } from "../../utils/string";
+import { getUniqueTags, toSlug } from "../../utils/string";
 
-const Tag = ({ companies, resources, tag }) => (
-  <>
-    <Head>
-      <title>The Remote Work Library | Remote work {tag}s</title>
+const Tag = ({ companies, resources, tag }) => {
+  const companiesString = companies
+    .slice(0, 8)
+    .map(({ name }) => name)
+    .join(", ");
 
-      <meta
-        name="description"
-        content={`A curated list of remote work ${tag}s`}
-      />
-    </Head>
+  return (
+    <>
+      <Head>
+        <title>The Remote Work Library | Remote work {tag}s</title>
 
-    <div className="bg-white rounded border border-gray-600 mb-8 py-4 px-6">
-      <h1 className="text-gray-900 font-bold text-xl mr-2">
-        Remote work {tag}s
-      </h1>
-    </div>
+        <meta
+          name="description"
+          content={`A curated list of remote work ${tag}s by ${companiesString} and others`}
+        />
+      </Head>
 
-    <ResourcesGrid companies={companies} resources={resources} />
-  </>
-);
+      <div className="bg-white rounded border border-gray-600 mb-8 py-4 px-6">
+        <h1 className="text-gray-900 font-bold text-xl mr-2">
+          Remote work {tag}s
+        </h1>
+
+        <p className="text-gray-700">By {companiesString} and others.</p>
+      </div>
+
+      <ResourcesGrid companies={companies} resources={resources} />
+    </>
+  );
+};
 
 export async function getStaticPaths() {
   const resources = await getResources();
 
-  const paths = resources.map(({ type }) => ({
-    params: { tag: toSlug(type) }
+  const paths = getUniqueTags(resources).map(tag => ({
+    params: { tag: toSlug(tag) }
   }));
 
   return {
@@ -43,16 +52,16 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { tag } }) {
+export async function getStaticProps({ params: { tag: tagSlug } }) {
   const companies = await getCompaniesWithMetaData();
   const unfilteredResources = await getResourcesWithMetaData();
 
   const resources = unfilteredResources.filter(
-    ({ type }) => toSlug(type) === tag
+    ({ tag }) => toSlug(tag) === tagSlug
   );
 
   return {
-    props: { companies, resources, tag }
+    props: { companies, resources, tag: tagSlug }
   };
 }
 

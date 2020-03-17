@@ -18,27 +18,25 @@ const ResourcesGrid = ({ companies, resources }) => (
           <img
             className="object-cover rounded-t w-full h-48"
             src={`/cover-${resource.id}.png`}
-            alt={`A remote work ${resource.type} by ${company.name}`}
+            alt={`A remote work ${resource.tag} by ${company.name}`}
           />
 
           <div className="flex flex-col justify-between px-6 pt-4 h-40">
             <div className="overflow-hidden">
-              <div className="text-gray-900 font-bold sm:text-lg text-xl mb-2">
+              <h3 className="text-gray-900 font-bold sm:text-lg text-xl mb-2">
                 {resource.name}
-              </div>
+              </h3>
 
-              <div className="text-gray-700 truncate">
-                {resource.description}
-              </div>
+              <p className="text-gray-700 truncate">{resource.description}</p>
             </div>
           </div>
 
-          <div className="flex justify-between rounded bg-gray-100 px-6 py-3">
+          <div className="flex justify-between rounded bg-gray-100 px-3 py-2">
             <Link
               href="/resources/[company]"
               as={`/resources/${toSlug(company.name)}`}
             >
-              <a className="flex items-center hover:underline">
+              <a className="flex items-center hover:underline px-3 py-1">
                 <img
                   alt={company.name}
                   className="w-4 h-4 mr-2"
@@ -49,9 +47,9 @@ const ResourcesGrid = ({ companies, resources }) => (
               </a>
             </Link>
 
-            <Link href="/tags/[tag]" as={`/tags/${toSlug(resource.type)}`}>
-              <a className="text-gray-700 text-xs hover:underline">
-                #{resource.type}
+            <Link href="/tags/[tag]" as={`/tags/${toSlug(resource.tag)}`}>
+              <a className="text-gray-700 text-xs hover:underline px-3 py-1">
+                #{resource.tag}
               </a>
             </Link>
           </div>

@@ -2,6 +2,7 @@ const fs = require("fs");
 const prettier = require("prettier");
 
 const { getCompanies, getResources } = require("./fetch");
+const { getUniqueTags, toSlug } = require("./string");
 
 (async () => {
   const companies = await getCompanies();
@@ -11,9 +12,7 @@ const { getCompanies, getResources } = require("./fetch");
     ({ name }) => `resources/${name.toLowerCase().replace(/ /g, "")}`
   );
 
-  const tagsRoutes = [
-    ...new Set(resources.map(({ type }) => `tags/${type.toLowerCase()}`))
-  ];
+  const tagsRoutes = getUniqueTags(resources).map(tag => `tags/${toSlug(tag)}`);
 
   const sitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
