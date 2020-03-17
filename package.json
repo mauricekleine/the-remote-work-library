@@ -12,6 +12,7 @@
     "autoprefixer": "^9.7.4",
     "axios": "^0.19.2",
     "got": "^10.6.0",
+    "lazysizes": "^5.2.0",
     "metascraper": "^5.11.6",
     "metascraper-description": "^5.11.6",
     "metascraper-image": "^5.11.6",

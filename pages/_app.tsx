@@ -1,5 +1,6 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
+import "lazysizes";
 
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
