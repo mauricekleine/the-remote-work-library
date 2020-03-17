@@ -29,6 +29,8 @@ const IndexPage = ({ companies, resources }: Props) => {
           name="description"
           content={`A curated list of ${tagsString} about remote work, working remotely, remote teams and collaborating remotely`}
         />
+
+        <link rel="canonical" href="https://theremoteworklibrary.com}" />
       </Head>
 
       <ResourcesGrid companies={companies} resources={resources} />

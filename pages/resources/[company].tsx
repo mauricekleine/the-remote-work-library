@@ -35,6 +35,13 @@ const CompanyPage = ({ company, resources }: Props) => {
           name="description"
           content={`A curated list of remote work ${tagsString} by ${company.name}`}
         />
+
+        <link
+          rel="canonical"
+          href={`https://theremoteworklibrary.com/resources/${toSlug(
+            company.name
+          )}`}
+        />
       </Head>
 
       <div className="bg-white rounded border border-gray-600 mb-8 py-4 px-6">
