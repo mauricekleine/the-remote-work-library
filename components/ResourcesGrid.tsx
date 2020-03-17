@@ -24,14 +24,14 @@ const ResourcesGrid = ({ companies, resources }: Props) => (
           <picture>
             <source
               className="object-cover rounded-t w-full h-48 lazyload"
-              srcSet={`/cover-${resource.id}.webp`}
+              data-src-set={`/cover-${resource.id}.webp`}
               type="image/webp"
             />
 
             <img
               alt={`A remote work ${resource.tag} by ${company.name}`}
               className="object-cover rounded-t w-full h-48 lazyload"
-              src={`/cover-${resource.id}.png`}
+              data-src={`/cover-${resource.id}.png`}
             />
           </picture>
 
@@ -54,7 +54,7 @@ const ResourcesGrid = ({ companies, resources }: Props) => (
                 <img
                   alt={company.name}
                   className="w-4 h-4 mr-2 lazyload"
-                  src={company.logo}
+                  data-src={company.logo}
                 />
 
                 <p className="text-gray-700 text-xs">{company.name}</p>
