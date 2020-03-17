@@ -21,11 +21,19 @@ const ResourcesGrid = ({ companies, resources }: Props) => (
           rel="noreferrer"
           target="_blank"
         >
-          <img
-            className="object-cover rounded-t w-full h-48"
-            src={`/cover-${resource.id}.webp`}
-            alt={`A remote work ${resource.tag} by ${company.name}`}
-          />
+          <picture>
+            <source
+              className="object-cover rounded-t w-full h-48"
+              srcSet={`/cover-${resource.id}.webp`}
+              type="image/webp"
+            />
+
+            <img
+              alt={`A remote work ${resource.tag} by ${company.name}`}
+              className="object-cover rounded-t w-full h-48"
+              src={`/cover-${resource.id}.png`}
+            />
+          </picture>
 
           <div className="flex flex-col justify-between px-6 pt-4 h-40">
             <div className="overflow-hidden">

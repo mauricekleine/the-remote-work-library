@@ -14,10 +14,16 @@ const { getResourcesWithMetaData } = require("./fetch");
         responseType: "arraybuffer"
       });
 
-      return sharp(response.data)
+      sharp(response.data)
         .resize(480)
         .webp()
         .toFile(`public/cover-${id}.webp`);
+
+      // fallback
+      sharp(response.data)
+        .resize(480)
+        .png()
+        .toFile(`public/cover-${id}.png`);
     })
   );
 })();
