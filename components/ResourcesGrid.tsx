@@ -23,7 +23,7 @@ const ResourcesGrid = ({ companies, resources }: Props) => (
         >
           <img
             className="object-cover rounded-t w-full h-48"
-            src={`/cover-${resource.id}.png`}
+            src={`/cover-${resource.id}.webp`}
             alt={`A remote work ${resource.tag} by ${company.name}`}
           />
 

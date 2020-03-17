@@ -16,8 +16,8 @@ const { getResourcesWithMetaData } = require("./fetch");
 
       return sharp(response.data)
         .resize(480)
-        .png()
-        .toFile(`public/cover-${id}.png`);
+        .webp()
+        .toFile(`public/cover-${id}.webp`);
     })
   );
 })();
