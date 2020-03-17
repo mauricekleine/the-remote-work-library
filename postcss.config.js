@@ -5,7 +5,7 @@ module.exports = {
     "@fullhuman/postcss-purgecss":
       process.env.NODE_ENV === "production"
         ? {
-            content: ["./components/**/*.ts", "./pages/**/*.ts"],
+            content: ["./components/**/*.tsx", "./pages/**/*.tsx"],
             defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
           }
         : false
