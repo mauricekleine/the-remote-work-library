@@ -12,31 +12,20 @@ const Logo = ({ alt, fallback, fileName }: Props) => {
   return (
     <picture className="w-4 h-4 mr-2">
       {!shouldFallback && (
-        <source
-          className="lazyload"
-          data-srcset={`/${fileName}.webp`}
-          srcSet="/logo.webp"
-          type="image/webp"
-        />
+        <source data-srcset={`/${fileName}.webp`} type="image/webp" />
       )}
 
       {!shouldFallback && (
-        <source
-          className="lazyload"
-          data-src={`/${fileName}.png`}
-          src="/logo.png"
-          style={{
-            display: shouldFallback ? "none" : "inherit"
-          }}
-          type="image/png"
-        />
+        <source data-src={`/${fileName}.png`} type="image/png" />
       )}
 
       <img
         alt={alt}
+        data-sizes="auto"
+        data-src={fallback}
         className="lazyload"
         onError={() => setShouldFallback(true)}
-        src={fallback}
+        src="/logo.png"
       />
     </picture>
   );
