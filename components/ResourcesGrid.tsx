@@ -24,7 +24,7 @@ const ResourcesGrid = ({ companies, resources }: Props) => (
           <picture>
             <source
               className="object-cover rounded-t w-full h-48 lazyload"
-              data-src-set={`/cover-${resource.id}.webp`}
+              data-srcset={`/cover-${resource.id}.webp`}
               type="image/webp"
             />
 
