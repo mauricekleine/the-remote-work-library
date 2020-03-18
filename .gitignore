@@ -29,3 +29,4 @@ yarn-error.log*
 # generated
 /public/sitemap.xml
 /public/cover-*
+/public/logo-*

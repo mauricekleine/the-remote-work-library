@@ -7,6 +7,7 @@ module.exports = {
   },
   webpack: (config, { isServer }) => {
     if (isServer) {
+      require("./utils/download-company-logos");
       require("./utils/download-cover-images");
       require("./utils/generate-sitemap");
     }

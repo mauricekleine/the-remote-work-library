@@ -1,8 +1,10 @@
 import Link from "next/link";
 
+import CoverImage from "./CoverImage";
+import Logo from "./Logo";
+
 import { toSlug } from "../utils/string";
 import { CompanyWithMetaData, ResourceWithMetaData } from "../utils/types";
-import Image from "./Image";
 
 type Props = {
   companies: CompanyWithMetaData[];
@@ -22,7 +24,7 @@ const ResourcesGrid = ({ companies, resources }: Props) => (
           rel="noreferrer"
           target="_blank"
         >
-          <Image
+          <CoverImage
             alt={`A remote work ${resource.tag} by ${company.name}`}
             fileName={`cover-${resource.id}`}
           />
@@ -43,11 +45,10 @@ const ResourcesGrid = ({ companies, resources }: Props) => (
               as={`/resources/${toSlug(company.name)}`}
             >
               <a className="flex items-center hover:underline px-3 py-1">
-                <img
+                <Logo
                   alt={company.name}
-                  className="w-4 h-4 mr-2 lazyload"
-                  data-src={company.logo}
-                  src="/logo.png"
+                  fallback={company.logo}
+                  fileName={`logo-${company.id}`}
                 />
 
                 <p className="text-gray-700 text-xs">{company.name}</p>
