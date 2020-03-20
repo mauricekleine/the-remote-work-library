@@ -21,6 +21,7 @@ export type Resource = {
   link: string;
   name: string;
   tag: string;
+  topic: string;
 };
 
 export type ResourceWithMetaData = Resource & MetaData;

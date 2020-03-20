@@ -2,17 +2,21 @@ const fs = require("fs");
 const prettier = require("prettier");
 
 const { getCompanies, getResources } = require("./fetch");
-const { getUniqueTags, toSlug } = require("./string");
+const { getUniqueTags, getUniqueTopics, toSlug } = require("./string");
 
 (async () => {
   const companies = await getCompanies();
   const resources = await getResources();
 
   const companiesRoutes = companies.map(
-    ({ name }) => `resources/${name.toLowerCase().replace(/ /g, "")}`
+    ({ name }) => `resources/${toSlug(name)}`
   );
 
   const tagsRoutes = getUniqueTags(resources).map(tag => `tags/${toSlug(tag)}`);
+
+  const topicsRoutes = getUniqueTopics(resources).map(
+    topic => `topics/${toSlug(topic)}`
+  );
 
   const sitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
@@ -21,7 +25,7 @@ const { getUniqueTags, toSlug } = require("./string");
         <loc>https://theremoteworklibrary.com</loc>
       </url>
 
-      ${[...companiesRoutes, ...tagsRoutes]
+      ${[...companiesRoutes, ...tagsRoutes, ...topicsRoutes]
         .map(
           route => `
             <url>

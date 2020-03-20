@@ -11,10 +11,11 @@ import { CompanyWithMetaData, ResourceWithMetaData } from "../utils/types";
 
 type Props = {
   companies: CompanyWithMetaData[];
+  coronaResources: ResourceWithMetaData[];
   resources: ResourceWithMetaData[];
 };
 
-const IndexPage = ({ companies, resources }: Props) => {
+const IndexPage = ({ companies, coronaResources, resources }: Props) => {
   const tags = getUniqueTags(resources);
   const tagsString = getCompoundedString(tags);
 
@@ -33,6 +34,14 @@ const IndexPage = ({ companies, resources }: Props) => {
         <link rel="canonical" href="https://theremoteworklibrary.com" />
       </Head>
 
+      <h1 className="text-xl font-bold my-6">
+        Remote work resources related to the coronavirus
+      </h1>
+
+      <ResourcesGrid companies={companies} resources={coronaResources} />
+
+      <p className="text-xl font-bold my-8">Other resources</p>
+
       <ResourcesGrid companies={companies} resources={resources} />
     </>
   );
@@ -40,12 +49,20 @@ const IndexPage = ({ companies, resources }: Props) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const companies: CompanyWithMetaData[] = await getCompaniesWithMetaData();
-  const resources: ResourceWithMetaData[] = await getResourcesWithMetaData();
+  const unsortedResources: ResourceWithMetaData[] = await getResourcesWithMetaData();
+
+  const coronaResources = unsortedResources.filter(
+    ({ topic }) => topic && topic.includes("corona")
+  );
+  const otherResources = unsortedResources.filter(
+    ({ topic }) => !topic || !topic.includes("corona")
+  );
 
   return {
     props: {
       companies,
-      resources
+      coronaResources,
+      resources: otherResources
     }
   };
 };

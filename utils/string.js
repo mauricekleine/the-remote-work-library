@@ -14,18 +14,27 @@ const getCompoundedString = stringArray => {
 };
 
 const getUniqueTags = resources => {
-  const tags = resources.map(({ tag }) => tag);
+  const tags = resources.map(({ tag }) => tag).filter(tag => Boolean(tag));
 
   return [...new Set(tags)];
 };
 
+const getUniqueTopics = resources => {
+  const topics = resources
+    .map(({ topic }) => topic)
+    .filter(topic => Boolean(topic));
+
+  return [...new Set(topics)];
+};
+
 const pluralize = string => `${string}s`;
 
-const toSlug = string => string.toLowerCase().replace(/ /g, "");
+const toSlug = string => string.toLowerCase().replace(/ /g, "-");
 
 module.exports = {
   getCompoundedString,
   getUniqueTags,
+  getUniqueTopics,
   pluralize,
   toSlug
 };

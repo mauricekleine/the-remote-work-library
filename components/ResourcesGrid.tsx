@@ -55,11 +55,24 @@ const ResourcesGrid = ({ companies, resources }: Props) => (
               </a>
             </Link>
 
-            <Link href="/tags/[tag]" as={`/tags/${toSlug(resource.tag)}`}>
-              <a className="text-gray-700 text-xs hover:underline px-3 py-1">
-                #{resource.tag}
-              </a>
-            </Link>
+            <div className="flex items-center">
+              {resource.topic && (
+                <Link
+                  href="/topics/[topic]"
+                  as={`/topics/${toSlug(resource.topic)}`}
+                >
+                  <a className="text-gray-700 text-xs hover:underline py-1">
+                    #{resource.topic}
+                  </a>
+                </Link>
+              )}
+
+              <Link href="/tags/[tag]" as={`/tags/${toSlug(resource.tag)}`}>
+                <a className="text-gray-700 text-xs hover:underline px-3 py-1">
+                  #{resource.tag}
+                </a>
+              </Link>
+            </div>
           </div>
         </a>
       );
