@@ -28,12 +28,12 @@ const CompanyPage = ({ company, resources }: Props) => {
     <>
       <Head>
         <title>
-          The Remote Work Library | Remote work {tagsString} by {company.name}
+          The Remote Work Library | Remote work resources by {company.name}
         </title>
 
         <meta
           name="description"
-          content={`A curated list of remote work ${tagsString} by ${company.name}`}
+          content={`A curated list of remote work ${tagsString} by ${company.name}, for digital nomads, remote feelancers, remote workers, remote teams or those interested in working and collaborating remotely`}
         />
 
         <link

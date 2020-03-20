@@ -34,7 +34,7 @@ const TagPage = ({ companies, resources, tag }: Props) => {
 
         <meta
           name="description"
-          content={`A curated list of remote work ${tag}s by ${companiesString} and others`}
+          content={`A curated list of remote work ${tag}s by ${companiesString} and others, for digital nomads, remote feelancers, remote workers, remote teams or those interested in working and collaborating remotely`}
         />
 
         <link

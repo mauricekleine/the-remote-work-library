@@ -27,7 +27,7 @@ const IndexPage = ({ companies, resources }: Props) => {
 
         <meta
           name="description"
-          content={`A curated list of ${tagsString} about remote work, working remotely, remote teams and collaborating remotely`}
+          content={`A curated list of ${tagsString} about remote work, for digital nomads, remote feelancers, remote workers, remote teams or those interested in working and collaborating remotely.`}
         />
 
         <link rel="canonical" href="https://theremoteworklibrary.com" />
