@@ -34,13 +34,19 @@ const IndexPage = ({ companies, coronaResources, resources }: Props) => {
         <link rel="canonical" href="https://theremoteworklibrary.com" />
       </Head>
 
-      <h1 className="text-xl font-bold my-6">
-        Remote work resources related to the coronavirus
-      </h1>
+      <div className="bg-white rounded border border-gray-600 mb-8 py-4 px-6">
+        <h1 className="text-gray-900 font-bold text-xl mr-2">
+          Remote work resources on the coronavirus (COVID-19)
+        </h1>
+      </div>
 
       <ResourcesGrid companies={companies} resources={coronaResources} />
 
-      <p className="text-xl font-bold my-8">Other resources</p>
+      <div className="bg-white rounded border border-gray-600 my-8 py-4 px-6">
+        <p className="text-gray-900 font-bold text-xl mr-2">
+          Other remote work resources
+        </p>
+      </div>
 
       <ResourcesGrid companies={companies} resources={resources} />
     </>
