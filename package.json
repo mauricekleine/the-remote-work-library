@@ -18,7 +18,7 @@
     "metascraper-description": "^5.11.6",
     "metascraper-image": "^5.11.6",
     "metascraper-logo-favicon": "^5.11.6",
-    "next": "9.3.0",
+    "next": "9.3.2",
     "node-fetch": "^2.6.0",
     "react": "16.13.0",
     "react-dom": "16.13.0",
