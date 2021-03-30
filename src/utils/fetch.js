@@ -14,9 +14,13 @@ const metascraper = Metascraper([
 ]);
 
 const fetchMetaData = async urlToFetch => {
-  const { body: html, url } = await got(urlToFetch);
+  try {
+    const { body: html, url } = await got(urlToFetch);
 
-  return await metascraper({ html, url });
+    return await metascraper({ html, url });
+  } catch (e) {
+    return {};
+  }
 };
 
 const fetchRecords = async table => {

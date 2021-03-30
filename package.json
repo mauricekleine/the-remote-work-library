@@ -9,38 +9,36 @@
     "start": "next start"
   },
   "dependencies": {
-    "airtable": "^0.8.1",
-    "autoprefixer": "^9.7.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "got": "^10.6.0",
     "lazysizes": "^5.2.0",
     "metascraper": "^5.11.6",
     "metascraper-description": "^5.11.6",
     "metascraper-image": "^5.11.6",
     "metascraper-logo-favicon": "^5.11.6",
-    "next": "9.3.0",
+    "next": "^10.1.2",
     "node-fetch": "^2.6.0",
-    "react": "16.13.0",
-    "react-dom": "16.13.0",
-    "sharp": "^0.25.1",
-    "tailwindcss": "^1.2.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sharp": "^0.25.1"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.0",
-    "@types/react": "^16.9.23",
+    "@types/react": "^17.0.3",
+    "autoprefixer": "^10.2.5",
     "dotenv": "^8.2.0",
     "globby": "^11.0.0",
-    "husky": ">=4",
     "lint-staged": ">=10",
+    "postcss": "^8.2.8",
     "prettier": "1.19.1",
+    "simple-git-hooks": "^2.2.0",
+    "tailwindcss": "^2.0.4",
     "typescript": "^3.8.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.{js,css,md}": "prettier --write"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
   }
 }

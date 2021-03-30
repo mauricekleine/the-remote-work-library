@@ -5,7 +5,7 @@ import "lazysizes";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 
-import "./styles.css";
+import "tailwindcss/tailwind.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
